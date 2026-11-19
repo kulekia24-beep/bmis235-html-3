@@ -31,6 +31,7 @@ nav img {
     height: 50px;
     margin: 4px;
     vertical-align: middle;
+   border-radius: 10px
 }
 
 /* no underline or border around the image links */
@@ -49,6 +50,9 @@ p {
     margin: 20px auto;
     font-size: 18px;
     line-height: 1.5;
+   background-color: #FFFFFF;
+   padding: 15px;
+   border-radius: 10px;
 }
 
 footer {
@@ -56,4 +60,10 @@ footer {
     font-size: 14px;
     color: #EDBB00;
     margin-top: 40px;
+}
+
+/* Gold hover effect for links */
+p a:hover {
+    color: #EDBB00;
+    text-decoration: underline;
 }
