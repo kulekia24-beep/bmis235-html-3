@@ -1,9 +1,9 @@
-# BMIS 235 · HTML-3 · Links + CSS: Your Own Site
+# BMIS 235 · HTML-3 · Links + CSS: MSN
 
 **Name:** Christopher Choy
 **GU username:** cchoy
 
-My live page: https://YOUR-GITHUB-USERNAME.github.io/bmis235-html-3/
+My live page: https://kulekia24-beep.github.io/bmis235-html-3/index.html
 
 Instructions: https://gu-27.github.io/html-module/html-3.html
 
