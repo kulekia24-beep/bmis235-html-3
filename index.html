@@ -52,8 +52,247 @@
      This box is empty on purpose. In Part 7 you paste an interactive
      graphic BETWEEN the opening <div> and the closing </div> below.
      ===================================================================== -->
-<div class="showcase"></div>
+<div class="showcase">
+  
+<!-- HTML: Creates three interactive MSN player cards -->
+<div class="msn-graphic">
+    <div class="msn-heading">Meet the MSN Trio</div>
+    <div class="msn-instructions">
+        Click a player to reveal a fun fact!
+    </div>
 
+    <div class="msn-cards">
+
+        <button class="msn-card" type="button"
+                aria-pressed="false">
+            <span class="msn-front">
+                <span class="msn-number">10</span>
+                <span class="msn-name">Lionel Messi</span>
+                <span class="msn-hint">Click to flip</span>
+            </span>
+            <span class="msn-back">
+                <strong>Right Winger / Playmaker</strong>
+                <span>Messi was the creative engine of MSN,
+                combining goalscoring with exceptional
+                passing and vision.</span>
+            </span>
+        </button>
+
+        <button class="msn-card" type="button"
+                aria-pressed="false">
+            <span class="msn-front">
+                <span class="msn-number">9</span>
+                <span class="msn-name">Luis Suarez</span>
+                <span class="msn-hint">Click to flip</span>
+            </span>
+            <span class="msn-back">
+                <strong>Striker</strong>
+                <span>Suarez won the European Golden Shoe
+                in 2015-16 after scoring 40 La Liga goals.</span>
+            </span>
+        </button>
+
+        <button class="msn-card" type="button"
+                aria-pressed="false">
+            <span class="msn-front">
+                <span class="msn-number">11</span>
+                <span class="msn-name">Neymar Jr.</span>
+                <span class="msn-hint">Click to flip</span>
+            </span>
+            <span class="msn-back">
+                <strong>Left Winger</strong>
+                <span>Neymar scored in the 2015 Champions
+                League final as Barcelona completed
+                the treble.</span>
+            </span>
+        </button>
+
+    </div>
+
+    <button class="msn-reset" type="button">
+        Reset Cards
+    </button>
+</div>
+
+<!-- CSS: Styles the cards using Barcelona's colors -->
+<style>
+.showcase .msn-graphic {
+    font-family: Georgia, "Times New Roman", serif;
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 750px;
+    margin: 20px auto;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.showcase .msn-heading {
+    color: #004D98;
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.showcase .msn-instructions {
+    color: #333333;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.showcase .msn-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.showcase .msn-card {
+    background-color: #004D98;
+    color: #FFFFFF;
+    border: 3px solid #EDBB00;
+    border-radius: 10px;
+    min-height: 180px;
+    padding: 10px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: transform 0.4s, background-color 0.4s;
+    overflow-wrap: anywhere;
+}
+
+.showcase .msn-card:nth-child(2) {
+    background-color: #DB0030;
+}
+
+.showcase .msn-card:hover {
+    transform: translateY(-4px);
+}
+
+.showcase .msn-card:focus-visible,
+.showcase .msn-reset:focus-visible {
+    outline: 3px solid #004D98;
+    outline-offset: 3px;
+}
+
+.showcase .msn-front,
+.showcase .msn-back {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    height: 100%;
+}
+
+.showcase .msn-number {
+    font-size: 46px;
+    font-weight: bold;
+}
+
+.showcase .msn-name {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.showcase .msn-hint {
+    font-size: 12px;
+}
+
+.showcase .msn-back {
+    display: none;
+    color: #111111;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.showcase .msn-card.flipped {
+    background-color: #EDBB00;
+}
+
+.showcase .msn-card.flipped .msn-front {
+    display: none;
+}
+
+.showcase .msn-card.flipped .msn-back {
+    display: flex;
+}
+
+.showcase .msn-reset {
+    margin-top: 18px;
+    padding: 10px 22px;
+    background-color: #004D98;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.showcase .msn-reset:hover {
+    background-color: #DB0030;
+}
+
+@media (max-width: 500px) {
+    .showcase .msn-graphic {
+        padding: 12px;
+    }
+
+    .showcase .msn-heading {
+        font-size: 21px;
+    }
+
+    .showcase .msn-cards {
+        gap: 5px;
+    }
+
+    .showcase .msn-card {
+        min-height: 190px;
+        padding: 5px;
+    }
+
+    .showcase .msn-number {
+        font-size: 32px;
+    }
+
+    .showcase .msn-name {
+        font-size: 13px;
+    }
+
+    .showcase .msn-back {
+        font-size: 11px;
+    }
+}
+</style>
+
+<!-- JavaScript: Flips cards and resets them on click -->
+<script>
+(function () {
+    const graphic = document.querySelector(
+        ".showcase .msn-graphic"
+    );
+
+    if (!graphic) return;
+
+    const cards = graphic.querySelectorAll(".msn-card");
+    const reset = graphic.querySelector(".msn-reset");
+
+    cards.forEach(function (card) {
+        card.addEventListener("click", function () {
+            const flipped = card.classList.toggle("flipped");
+            card.setAttribute("aria-pressed", String(flipped));
+        });
+    });
+
+    reset.addEventListener("click", function () {
+        cards.forEach(function (card) {
+            card.classList.remove("flipped");
+            card.setAttribute("aria-pressed", "false");
+        });
+    });
+})();
+</script>
+</div>
+  
 <!-- Footer: fill in your name -->
 <footer>Built by Christopher Choy &middot; BMIS 235</footer>
 
